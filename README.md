@@ -3,6 +3,7 @@
 
 # Components
 <img src="./screenshots/2023072110071689907301.png" alt="" align="right" width="400px">
+
 - **WM**                : [Hyprland](https://github.com/hyprwm/Hyprland) :art: WM for Wayland!
 - **Shell**             : [zsh](https://wiki.archlinux.org/index.php/zsh) :shell: with [oh my zsh](https://github.com/ohmyzsh/ohmyzsh)!
 - **Terminal**          : [foot](https://codeberg.org/dnkl/foot) :foot:
