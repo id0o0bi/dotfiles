@@ -16,7 +16,7 @@ REEGXDATE="\"startdate\":\"${TODAYDATE}\""
 # If these file are here, we are good
 if [[ -s $JSON_FILE && -s $DOWN_FILE ]]; then
     echo "work done!"
-    exit 1
+    exit 0
 fi
 
 echo "Downloading Json data"
@@ -26,7 +26,7 @@ echo "Downloaded Json data"
 
 if [[ ! -s $JSON_FILE ]]; then
     echo "json file corrupted"
-    exit 1;
+    exit 1
 fi
 
 # echo $JSON_FILE
@@ -40,7 +40,7 @@ fi
 wget -O $DOWN_FILE "https://cn.bing.com${BASH_REMATCH[1]}"
 if [[ ! -s $DOWN_FILE ]]; then
     echo "image file corrupted"
-    exit 1;
+    exit 1
 fi
 
 ### move it to your wallpapaer directory
