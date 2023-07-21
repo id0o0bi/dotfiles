@@ -1,0 +1,16 @@
+mode=drun
+filter_rate=50
+insensitive=true
+allow-markup=true
+term=alacritty
+layer=top
+# Theme# Also check ./style.css
+colors=colors
+image_size=24
+allow_images=true
+#Position
+width=800
+height=480
+halign=fill
+orientation=vertical
+content_halign=fill# This hide executable actionsno_actions=true

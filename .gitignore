@@ -1,0 +1,14 @@
+.vscode
+
+alacritty
+bash
+fcitx5
+fish
+mpv
+misc
+fontconfig
+pipewire
+ranger
+ncmpcpp/error.log
+
+nohup.out
