@@ -7,7 +7,7 @@ layer=top
 # Theme# Also check ./style.css
 colors=colors
 image_size=24
-allow_images=true
+; allow_images=true
 #Position
 width=800
 height=480

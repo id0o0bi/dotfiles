@@ -17,7 +17,7 @@ on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 # font=JetBrains Mono 10
 width=300
 height=100
-margin=8
+margin=6
 padding=8
 border-size=1
 border-radius=5
@@ -35,25 +35,17 @@ max-visible=5
 layer=overlay
 anchor=top-right
 
-background-color=#24273a
-text-color=#cad3f5
-border-color=#c6a0f6
-progress-color=over #B4A1DB
+background-color=#1d1f21
+text-color=#c5c8c6
+border-color=#81a2be
+progress-color=over #f6c177
 
 [urgency=low]
-border-color=#B4A1DB
-default-timeout=2000
-
-[urgency=normal]
-border-color=#B4A1DB
-default-timeout=5000
+background-color=#1d1f21
+text-color=#f0c674
+border-color=#81a2be
 
 [urgency=high]
-border-color=#D04E9D
-text-color=#D04E9D
-default-timeout=0
-
-[category=mpd]
-border-color=#E49186
-default-timeout=2000
-group-by=category
+background-color=#1d1f21
+text-color=#cc6666
+border-color=#81a2be
