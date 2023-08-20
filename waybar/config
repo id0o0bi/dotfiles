@@ -13,13 +13,11 @@
         "custom/weather",
         "mpd",
         "tray",
-        "idle_inhibitor",
+        // "idle_inhibitor",
         "cpu",
-        "memory",
-        "disk",
+        // "memory",
+        // "disk",
         "wireplumber",
-        "network",
-        "bluetooth",
         "battery",
         "custom/updates",
         "clock"
@@ -69,7 +67,7 @@
     "clock": {
         "format": "{:%b %d %H:%M}",
         "format-alt": "{:%A, %B %d, %Y}",
-        "tooltip-format": "<span size='10pt'>{calendar}</span>",
+        "tooltip-format": "{calendar}",
         "timezone": "Asia/Shanghai",
         "calendar": {
             "mode"          : "month",
@@ -78,11 +76,11 @@
             "on-scroll"     : 1,
             "on-click-right": "mode",
             "format": {
-                "months":     "<span color='#fefefe'>{}</span>",
-                "days":       "<span color='#fefefe'>{}</span>",
-                "weeks":      "<span color='#94a6e3'>W{}</span>",
-                "weekdays":   "<span color='#94a6e3'>{}</span>",
-                "today":      "<span color='#ff0000'><b><u>{}</u></b></span>"
+                "months":     "<span size='10pt' color='#fefefe'>{}</span>",
+                "days":       "<span size='10pt' color='#fefefe'>{}</span>",
+                "weeks":      "<span size='10pt' color='#94a6e3'>W{}</span>",
+                "weekdays":   "<span size='10pt' color='#94a6e3'>{}</span>",
+                "today":      "<span size='10pt' color='#ff0000'><b><u>{}</u></b></span>"
             }
         },
         "actions":  {
@@ -218,7 +216,7 @@
     },
 
     "custom/updates": {
-        "format": "{} {icon}",
+        "format": "{}{icon}",
         "return-type": "json",
         "format-icons": {
             "has-updates": "󰘿",
