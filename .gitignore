@@ -1,26 +1,26 @@
+# *.conf
+*.vim
 .vscode
 
 alacritty
-bash
 bottom
 btop
+cava
 dust
 fcitx5
-fish
 fontconfig
-kitty
 misc
 mpd
 mpv
-nvim
 ncmpcpp
 nohup.out
 pipewire
+pypoetry
 ranger
 swayidle
 swaylock
+w3m
+wezterm
 yt-dlp
 zathura
 zsh
-
-*.conf

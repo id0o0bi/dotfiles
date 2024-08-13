@@ -1,0 +1,65 @@
+// window.notification-popups
+window.notification-bubbles .notification-list {
+  min-width: 360px;
+  min-height: 1px;
+  // background: red;
+  .notification-box {
+    @include window;
+    margin: .5em .5em 0 .5em;
+    font-family: $global-font-family;
+  }
+}
+
+.notification-box {
+  margin: .5em .5em .5em 0;
+  padding: .5em;
+
+  border-radius: $radius;
+  margin-bottom: 6px;
+
+  &.critical {border: 1px solid $love}
+
+  .notification-icon {
+    margin: .3em .5em 0 0;
+
+    image, box {
+      min-width: 48px;
+      min-height: 48px;
+      font-size: 48px;
+      color: $muted;
+      border-radius: $radius;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .notification-title { color: $rose; font-size: 14px; padding: 5px 0; }
+  .notification-body { color: $muted; font-size: 12px; }
+  .notification-head {
+    button {
+      all: unset;
+      color: $muted;
+      margin-left: 8px;
+      min-height: 16px;
+      min-width: 16px;
+      font-size: 12px;
+      background: $overlay;
+      border-radius: 16px;
+
+      &:hover {
+        color: $rose;
+        background: $pine;
+      }
+    }
+  }
+
+  .notification-button {
+    margin: .3em;
+    margin-bottom: 0;
+    min-height: 26px;
+
+    &:first-child {margin-left: 0;}
+    &:last-child {margin-right: 0;}
+  }
+}

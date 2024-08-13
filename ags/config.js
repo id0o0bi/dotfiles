@@ -1,25 +1,51 @@
-/* exported config */
-const { Theme } = imports.theme.theme;
+import TopBar          from './widgets/TopBar.js';
+import OSD             from './widgets/OSD.js';
+import AppLauncher     from './widgets/AppLauncher.js';
+import Settings        from './widgets/Settings.js';
+import Dashboard       from './widgets/Dashboard.js';
+import Bubbles         from './widgets/Bubbles.js';
+import PowerMenu       from './widgets/PowerMenu.js';
+import { init }        from './core/setup.js';
+import { forMonitors } from './core/utils.js';
 
-Object.keys(imports.modules).forEach(m => imports.modules[m]);
-Object.keys(imports.layouts.widgets).forEach(m => imports.layouts.widgets[m]);
+// Utils.timeout(1000, () => Utils.notify({
+//     summary: "Notification Popup Example",
+//     iconName: "info-symbolic",
+//     body: "Lorem ipsum dolor sit amet, qui minim labore adipisicing "
+//         + "minim sint cillum sint consectetur cupidatat.",
+//     actions: {
+//         "Cool": () => print("pressed Cool"),
+//         "OK": () => print("pressed OK!"),
+//         "Why": () => print("pressed Why!"),
+//     },
+// }))
+//
+// Utils.timeout(1000, () => Utils.notify({
+//     summary: "Popup Example 2222",
+//     iconName: "info-symbolic",
+//     body: "Lorem ipsum dolor sit amet, qui minim labore adipisicing "
+//         + "minim sint cillum sint consectetur cupidatat."
+//         + "minim sint cillum sint consectetur cupidatat."
+//         + "minim sint cillum sint consectetur cupidatat."
+//         + "minim sint cillum sint consectetur cupidatat."
+//         + "minim sint cillum sint consectetur cupidatat.",
+//     actions: {
+//         "Cool": () => print("pressed Cool"),
+//         "Why": () => print("pressed Why!"),
+//     },
+// }))
 
-var config = {
-    baseIconSize: 20,
-    stackTraceOnError: true,
-    closeWindowDelay: {
-        'dashboard': 350,
-        'quicksettings': 350,
+App.config({
+    onConfigParsed: () => {
+        init()
     },
-    windows: [
-        ...ags.Service.Hyprland.HyprctlGet('monitors').map(({ id }) => ([
-            imports.layouts.shared.indicator(id),
-        ])).flat(),
-        imports.layouts.shared.powermenu,
-        imports.layouts.shared.verification,
-        imports.layouts.shared.overview,
-        imports.layouts.shared.applauncher,
-
-        ...imports.layouts[Theme.getSetting('layout')].windows,
+    windows: () => [
+        ...forMonitors(TopBar),
+        ...forMonitors(OSD),
+        ...forMonitors(Bubbles),
+        AppLauncher(),
+        Settings(),
+        PowerMenu(),
+        Dashboard(),
     ],
-};
+})

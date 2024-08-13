@@ -1,0 +1,100 @@
+$radius: 6px;
+$font-size: 16px;
+$global-font-family: 'UbuntuMono Nerd Font Propo, Twitter Color Emoji, PingFang SC';
+$box-shadow-t: transparentize($contrastWhite, 0.8) 0px 1px 1px 0px inset;
+$box-shadow-b: transparentize($contrastBlack, 0.4) 0px 1px 1px 0px;
+$card-bg: transparentize($highlightLow, 0.6);
+$card-bs: $box-shadow-t, $box-shadow-b;
+
+// CaskaydiaCove NFM
+// FiraCode Nerd Font Mono
+// Hack Nerd Font Mono
+// JetBrainsMono Nerd Font Mono
+// NotoMono Nerd Font Mono
+// SauceCodePro Nerd Font Mono
+// UbuntuMono Nerd Font Mono
+
+// PingFang SC
+// YaHei Consolas Hybrid
+// Source Han Sans CN
+
+separator { background-color: $overlay_blur; }
+window { all: unset; background: transparent; color: $text; }
+menu {background: $highlightLow; color: $text}
+tooltip {
+  font-family: $global-font-family;
+  background-color: $highlightLow;
+  color: $text;
+  text-decoration: none;
+  text-shadow: none;
+  label {color: $text}
+}
+
+switch {
+  all: unset;
+	padding: 1px;
+  border: none;
+	border-radius: 14px;
+	color: $overlay_blur;
+	background-color: $surface;
+
+  min-width: 12px;
+  min-height: 12px;
+  font-size: 0px;
+
+
+  &:checked {
+  	color: $text;
+    border: none;
+  	background-color: $text;
+  }
+
+  &:hover {
+	  // background-color: transparentize($rose, 0.3);
+  }
+
+
+  slider {
+    min-height: 12px;
+    padding: 0;
+    margin: 0;
+    background: none;
+    background-color: $muted;
+    border-radius: 100px;
+    border: none;
+    box-shadow: none;
+  }
+
+  image {
+	  color: transparent;
+  }
+}
+
+@mixin window {
+  all: unset;
+  padding: .5em;
+  color: $text;
+  border: 1px solid $overlay_blur;
+  border-radius: $radius;
+  background: $base_blur;
+}
+
+button.arrow-button {
+  all: unset;
+  color: $muted;
+  &:hover {color: $text;}
+}
+
+button.rose-button {
+  all: unset;
+  background: transparentize($highlightLow, 0.2);
+  color: $text;
+  padding: 0 1em;
+  border: 1px solid transparentize($muted, 0.4);
+  min-height: 32px;
+  border-radius: $radius;
+
+  &:hover { background: transparentize($highlightLow, 0.8); }
+  &:disabled { color: $muted; }
+}
+

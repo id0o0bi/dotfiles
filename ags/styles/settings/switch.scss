@@ -1,0 +1,95 @@
+window#settings .settings {
+
+  .switch-group {
+    min-height: 32px;
+    padding: 8px 0 16px;
+
+    .switch-box {
+      margin: 0 8px;
+      min-height: 36px;
+      border: 1px solid $muted;
+      background: transparentize($highlightLow, 0.2);
+      color: $text;
+      border-radius: 100px;
+
+      .icon { padding: 0 14px; }
+      .muted { color: $muted; }
+
+      button.arrow-button { padding: 0 14px; }
+      button.switch {
+        all: unset;
+        &:hover {font-weight: bold}
+      }
+
+
+      &:first-child {margin-left: 0;}
+      &:last-child {margin-right: 0;}
+    }
+
+  }
+
+  .control-box {
+    background: $card-bg;
+    border-radius: $radius;
+    margin: 0px 8px 1px 8px;
+    box-shadow: $card-bs;
+
+    .control-head {
+      min-height: 32px;
+      padding: 0 8px;
+      border-bottom: 1px solid transparentize($muted, 0.6);
+      button {
+        all: unset;
+        margin:0 6px;
+        color: $muted;
+        &:hover {color: $text;}
+      }
+    }
+
+    .control-body {
+      padding: 8px;
+    }
+  }
+
+  .bluetooth-device {
+    margin: 6px 0;
+    min-height: 24px;
+
+    box.icon {margin-right: 6px;}
+    image {margin-bottom:2px;}
+    label.device-name {margin-left: 2px;}
+
+    levelbar {
+      all: unset;
+
+      trough {
+        all: unset;
+        min-height: 4px;
+
+        .filled {
+          background: $foam;
+          border: none;
+        }
+
+        .empty {
+          background: $muted;
+          border: none;
+        }
+      }
+    }
+  }
+
+  .update-packages {
+    .empty {margin: 32px 0;}
+
+    .update-item {
+      margin-bottom: 4px;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed $overlay_blur;
+      .update-title {font-weight: bold;}
+      .update-version {color: $muted;font-size:0.8em}
+    }
+  }
+
+}
+

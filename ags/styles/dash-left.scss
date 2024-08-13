@@ -1,0 +1,83 @@
+.dash-mpris {
+  .player {
+    min-width: 320px;
+    padding-right: .5em;
+    background: linear-gradient(to right, $rose, $pine);
+    box-shadow: $card-bs;
+    margin: 0 .5em .5em 0;
+    border-radius: $radius;
+    transition: 1s;
+
+    .img {
+      min-width: 64px;
+      min-height: 64px;
+      background-size: cover;
+      background-position: center;
+      border-radius: $radius 0 0 $radius;
+      margin-right: .5em;
+    }
+
+    button {
+      all: unset;
+      font-size: 12px;
+      color: $highlightHigh;
+      &.play-pause { padding: 0 .5em; }
+      &:hover {color: $highlightLow}
+    }
+
+    .title {color: $highlightLow;}
+
+    .artist, .position {font-size: 12px;color: $highlightHigh;}
+
+    scale.position {
+      padding: 0;
+      margin-bottom: .3em;
+    }
+
+    scale.position trough {
+      min-height: 3px;
+      background: $highlightHigh;
+      border: none;
+    }
+
+    scale.position highlight {
+      all: unset;
+      background-color: $highlightLow;
+      border-radius: $radius;
+      border: none;
+    }
+
+    scale.position slider {
+      all: unset;
+    }
+
+  }
+}
+
+.dash-notify {
+
+  min-width: 360px;
+  min-height: 360px;
+
+  .foot {
+    padding: .5em .5em 0 0;
+    button.dnd {font-size: 18px;}
+  }
+
+  .placeholder { font-size: 72px; }
+
+  .box-wrapper {
+    background: $card-bg;
+    box-shadow: $card-bs;
+    border-radius: $radius;
+    margin: 0 .5em .8em 0;
+
+    .notification-status {
+      padding: .5em .8em;
+      box-shadow: $box-shadow-t;
+      font-size: $font-size * 0.8;
+      color: $muted;
+    }
+  }
+}
+

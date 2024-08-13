@@ -1,0 +1,57 @@
+// placeholder-text {color: red;}
+window#launcher .launcher {
+  @include window;
+
+  .header {
+    margin: 0 .5em;
+    entry {
+      color: $rose;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid $muted;
+      border-radius: 0;
+      padding: .5em;
+      font-weight: bold;
+      label {color: red;}
+
+      &:focus {
+        box-shadow: none;
+        color: $text;
+        border-bottom: 2px solid $rose;
+      }
+    }
+  }
+
+  scrolledwindow {
+    padding: .5em;
+    min-width: 520px;
+    min-height: 380px;
+
+    .app {
+      background: transparent;
+      padding: .5em;
+      color: $text;
+      box-shadow: none;
+      border: none;
+      text-decoration: none;
+      text-shadow: none;
+      -gtk-icon-shadow: transparentize($text, 0.5) 1px 0 2px;
+
+      &:hover {
+        color: $rose;
+        text-shadow: $muted 1px 0 2px;
+        -gtk-icon-shadow: $rose 1px 0 2px;
+      }
+
+      image { margin-right: 14px; }
+
+      .title {
+        min-height: 1.6em;
+        font-weight: bold;
+        text-shadow: none;
+      }
+
+      .description { color: $muted; }
+    }
+  }
+}

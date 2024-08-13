@@ -1,0 +1,28 @@
+window.indicator {
+  background: transparent;
+  .progress {
+    border: 1px solid $overlay_blur;
+    background: $base_blur;
+    padding: .2em;
+    border-radius: 500px;
+    margin-right: .5em;
+
+    .fill {
+      border-radius: 500px;
+      padding: 5px 3px;
+      background-color: transparentize($highlightLow, 0.2);
+      box-shadow: $box-shadow-t, $box-shadow-b;
+      color: $text;
+
+      transition: 0.3s ease-out;
+
+      image { -gtk-icon-transform: scale(0.7); }
+    }
+  }
+
+  .microphone {
+    @include window;
+    margin: 1em;
+    font-size: 52px;
+  }
+}

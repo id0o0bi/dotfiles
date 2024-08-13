@@ -1,0 +1,55 @@
+.clock {
+  padding: 1em 0 1em;
+
+  grid {
+    padding: 4px;
+    // background: linear-gradient(to right, $rose, $pine);
+
+    label {
+      margin: 1px;
+      border-radius: 3px;
+      min-height: 16px;
+      min-width: 16px;
+      font-size: 8px;
+      transition: 200ms;
+      font-size: 0;
+      color: $rose;
+      font-family: $global-font-family;
+      background: $overlay;
+
+      &.on {background: $pine}
+      &.second {font-size: 0px;background: $rose;}
+      &.on.second {background: $iris}
+    }
+  }
+}
+
+.weather-info {
+  // color: $muted;
+  // font-size: $font-size;
+}
+
+.weather-forcast {
+  color: $muted;
+  padding: 0 8px 8px;
+  .forcast-item :first-child {
+    font-size: 32px;
+    padding-bottom: 6px;
+  }
+}
+
+calendar {
+  all: unset;
+  padding: 8px;
+  font-size: $font-size;
+
+  // &.header { border: none; }
+  &:selected { color: $rose; }
+  &:indeterminate { color: $muted; }
+
+  &.highlight { 
+    background: transparentize($highlightLow, 0.2);
+    border-radius: $radius;
+    color: $rose; 
+  }
+}
