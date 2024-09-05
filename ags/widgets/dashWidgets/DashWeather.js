@@ -1,42 +1,92 @@
-import weather from '../../services/Weather.js'
+import weather from '../../services/OpenWeather.js'
 import { clock } from '../../variables/System.js';
 
+const icon_path = `${App.configDir}/assets/openweathermap/`;
+const icon_file = {
+    'na' : `${icon_path}01d.svg`,
+    'hu' : `${icon_path}humidity.svg`,
+    'ba' : `${icon_path}barometer.svg`,
+    'wi' : `${icon_path}wind.svg`,
+    'ho' : `${icon_path}horizon.svg`,
+    'sr' : `${icon_path}sunrise.svg`,
+    'mr' : `${icon_path}moonrise.svg`,
+    'ss' : `${icon_path}sunset.svg`,
+    'ms' : `${icon_path}moonset.svg`,
+}
+
+const weatherExt = (icon, label) => Widget.Box({ children: [Widget.Icon(icon), label] })
+
+const wiLabel = Widget.Label({ label: weather.bind('today').as(t => `${t.wind?.speed || ''}km/h`) })
+const huLabel = Widget.Label({ label: weather.bind('today').as(t => `${t.main?.humidity || ''}%`) })
+const srLabel = Widget.Label({ label: weather.bind('city').as(c => getHourMinutes(c.sunrise)) })
+const ssLabel = Widget.Label({ label: weather.bind('city').as(c => getHourMinutes(c.sunset)) })
+
+const getHourMinutes = (ts) => {
+    let d = new Date(ts*1000);
+    let h = d.getHours().toString().padStart(2, '0');
+    let m = d.getMinutes().toString().padStart(2, '0');
+
+    return `${h}:${m}`;
+}
+
 export const WeatherInfo = () => Widget.Box({
-    className: 'weather-info',
-    vertical: true,
+    class_name: 'weather-info', 
+    vertical: false,
     children: [
-        Widget.Label({
-            class_name: 'weather',
-            wrap: true,
-            justification: 'center',
-            setup: self => self.hook(weather, () => {
-                self.label = [
-                    weather.getCurrentIcon(),
-                    clock.value.format('%F %A,'),
-                    weather.getCurrentTemp()
-                ].filter(a => a).join(' ');
-            })
-        }),
-    ],
+        Widget.Icon({
+            class_name: 'weather-icon',
+            icon: weather.bind('today').as(t => weather.getWeatherIcon(t))
+        }), 
+        Widget.Box({
+            hexpand: true, 
+            vertical: true, 
+            vpack: 'center',
+            class_name: 'weather-ext',
+            children: [
+                Widget.Box({
+                    homogeneous: true, 
+                    children: [
+                        weatherExt(icon_file.sr, srLabel),
+                        weatherExt(icon_file.wi, wiLabel),
+                    ]
+                }), 
+                Widget.Box({
+                    homogeneous: true, 
+                    children: [
+                        weatherExt(icon_file.mr, ssLabel),
+                        weatherExt(icon_file.hu, huLabel),
+                    ]
+                }),
+                Widget.Label({
+                    hpack: 'start', 
+                    justification: 'left',
+                    label: Utils.merge([weather.bind('today'), clock.bind()], (t, c) => {
+                        return t.main
+                            ? `${parseInt(t.main.temp)}°C, ${c.format('%F %A')}`
+                            : `${c.format('%F %A')}`;
+                    })
+                })
+            ]
+        })
+    ]
 })
 
 export const WeatherForcast = () => Widget.Box({
     vertical: false, 
     class_name: 'weather-forcast',
     homogeneous: true,
-    children: weather.bind('data').as(d => {
-        let cast = weather.getHourlyForcast(5);
-
-        return cast.map(c => {
+    children: weather.bind('hours').as(h => {
+        return h.map(c => {
             return Widget.Box({
                 className: 'forcast-item',
                 vertical: true,
                 children: [
-                    Widget.Label(weather.transformToIcon(c.weatherCode)), 
-                    Widget.Label(c.time < 1000 ? `0${c.time/100}:00` : `${c.time/100}:00`),
-                    Widget.Label(`${c.tempC}°C`)
+                    Widget.Icon(weather.getWeatherIcon(c)), 
+                    Widget.Label(getHourMinutes(c.dt)),
+                    Widget.Label(`${parseInt(c.main?.temp)}°C`)
                 ]
             })
         });
     })
 })
+

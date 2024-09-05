@@ -96,6 +96,13 @@ export async function bash(strings) {
 }
 
 /**
+ * @returns GLib.file_test
+ */
+export function fileExist(path) {
+    return GLib.file_test(path, GLib.FileTest.EXISTS)
+}
+
+/**
  * @returns execAsync(cmd)
  */
 export async function sh(cmd) {

@@ -25,15 +25,25 @@
 }
 
 .weather-info {
-  // color: $muted;
-  // font-size: $font-size;
+  .weather-icon {
+    font-size: 72px;
+    margin: 0 8px 0 16px;
+  }
+
+  .weather-ext {
+    color: $muted;
+    image {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+  }
 }
 
 .weather-forcast {
   color: $muted;
-  padding: 0 8px 8px;
+  margin: -16px 0 16px 0;
   .forcast-item :first-child {
-    font-size: 32px;
+    font-size: 40px;
     padding-bottom: 6px;
   }
 }

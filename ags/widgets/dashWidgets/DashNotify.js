@@ -1,5 +1,4 @@
 import GLib            from 'gi://GLib';
-import icons           from '../../core/icons.js'
 import { clock }       from '../../variables/System.js'
 import { timeElapsed } from '../../core/utils.js'
 import Notification    from "../templates/Notification.js";

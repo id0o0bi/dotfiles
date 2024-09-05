@@ -31,8 +31,6 @@ function lengthStr(len) {
 /** @param {import('types/service/mpris').MprisPlayer} player */
 function Player(player) {
 
-    // console.log(player)
-
     const img = Widget.Box({
         class_name: "img",
         vpack: "center",
@@ -46,7 +44,7 @@ function Player(player) {
             ].filter(n => n).join("\n");
         }),
         css: player.bind("cover_path")
-            .transform(p => `background-image: url('${p}')`)
+            .transform(p => `background-image: url('${p ? p : App.configDir+"/assets/music-icon.png"}')`)
     })
 
     const title = Widget.Label({
@@ -130,7 +128,7 @@ function Player(player) {
         {
             class_name: "player", 
             // setup: self => self.hook(mpris, () => {
-            //     // console.log(player);
+            //     console.log(player);
             // }),
             visible: player.bind('trackid').as(r => !r?.endsWith('/NoTrack'))
         },
