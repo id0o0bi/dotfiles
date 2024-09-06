@@ -3,7 +3,8 @@ import { clock } from '../../variables/System.js';
 
 const icon_path = `${App.configDir}/assets/openweathermap/`;
 const icon_file = {
-    'na' : `${icon_path}01d.svg`,
+    'na' : `${icon_path}na.svg`,
+    'tp' : `${icon_path}thermometer.svg`,
     'hu' : `${icon_path}humidity.svg`,
     'ba' : `${icon_path}barometer.svg`,
     'wi' : `${icon_path}wind.svg`,
@@ -17,6 +18,7 @@ const icon_file = {
 const weatherExt = (icon, label) => Widget.Box({ children: [Widget.Icon(icon), label] })
 
 const wiLabel = Widget.Label({ label: weather.bind('today').as(t => `${t.wind?.speed || ''}km/h`) })
+const tpLabel = Widget.Label({ label: weather.bind('today').as(t => `${t.main?.temp || ''}°C`) })
 const huLabel = Widget.Label({ label: weather.bind('today').as(t => `${t.main?.humidity || ''}%`) })
 const srLabel = Widget.Label({ label: weather.bind('city').as(c => getHourMinutes(c.sunrise)) })
 const ssLabel = Widget.Label({ label: weather.bind('city').as(c => getHourMinutes(c.sunset)) })
@@ -33,9 +35,14 @@ export const WeatherInfo = () => Widget.Box({
     class_name: 'weather-info', 
     vertical: false,
     children: [
-        Widget.Icon({
-            class_name: 'weather-icon',
-            icon: weather.bind('today').as(t => weather.getWeatherIcon(t))
+        Widget.Box({
+            vertical: true,
+            children: [
+                Widget.Icon({
+                    class_name: 'weather-icon',
+                    icon: weather.bind('today').as(t => weather.getWeatherIcon(t))
+                }), 
+            ]
         }), 
         Widget.Box({
             hexpand: true, 
@@ -47,22 +54,23 @@ export const WeatherInfo = () => Widget.Box({
                     homogeneous: true, 
                     children: [
                         weatherExt(icon_file.sr, srLabel),
-                        weatherExt(icon_file.wi, wiLabel),
+                        weatherExt(icon_file.hu, huLabel),
+                        // weatherExt(icon_file.wi, wiLabel),
                     ]
                 }), 
                 Widget.Box({
                     homogeneous: true, 
                     children: [
                         weatherExt(icon_file.mr, ssLabel),
-                        weatherExt(icon_file.hu, huLabel),
+                        weatherExt(icon_file.tp, tpLabel),
                     ]
                 }),
                 Widget.Label({
                     hpack: 'start', 
                     justification: 'left',
-                    label: Utils.merge([weather.bind('today'), clock.bind()], (t, c) => {
-                        return t.main
-                            ? `${parseInt(t.main.temp)}°C, ${c.format('%F %A')}`
+                    label: Utils.merge([weather.bind('city'), clock.bind()], (ct, c) => {
+                        return ct.name
+                            ? `${ct.name}, ${c.format('%F %A')}`
                             : `${c.format('%F %A')}`;
                     })
                 })

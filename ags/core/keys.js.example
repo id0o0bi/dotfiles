@@ -1,0 +1,4 @@
+export default {
+    openweather_key: 'your openweather API key here',
+    openweather_city: 'your city name here',
+}

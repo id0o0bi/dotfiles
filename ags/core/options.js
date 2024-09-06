@@ -5,5 +5,4 @@ export default {
 
     temperature: '/sys/class/thermal/thermal_zone0/temp',
     systemFetchInterval: 5000,
-
 }

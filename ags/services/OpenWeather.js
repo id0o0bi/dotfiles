@@ -1,13 +1,14 @@
 import { fileExist } from "../core/utils.js"
+import keys from "../core/keys.js";
 
 // @link https://openweathermap.org/forecast5
+// @link weather icons: https://bas.dev/work/meteocons
 // (*times are shown in the local timezone)
 //
 // Weather object see below list
 class OpenWeather extends Service {
     static {
         Service.register(this, {}, {
-            // 'data': ['object', 'r'],     // original api return data
             'city':  ['object', 'r'],    // below example in "city"
             'today': ['object', 'r'],    // below example in "list"
             'hours': ['array', 'r'],     // array of weather objects
@@ -31,9 +32,10 @@ class OpenWeather extends Service {
 
     update() {
         let arg = [
-            'q=Hangzhou',
+            `q=${keys.openweather_city}`,
             'units=metric',
-            'appid=yourappidhere', 
+            'lang=zh_cn',
+            `appid=${keys.openweather_key}`, 
             'cnt=5'
         ]
         let url = `https://api.openweathermap.org/data/2.5/forecast?${arg.join('&')}`;
@@ -41,9 +43,9 @@ class OpenWeather extends Service {
             .then(res => {
                 let data = JSON.parse(res);
                 if (data.cod != 200) {
-                    // Utils.notify({
-                    //     summary: "Weather Info Update Failed",
-                    //     iconName: "info-symbolic",
+                    // utils.notify({
+                    //     summary: "weather info update failed",
+                    //     iconname: "info-symbolic",
                     //     body: res,
                     // })
                     return ;
