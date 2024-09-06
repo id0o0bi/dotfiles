@@ -70,8 +70,8 @@ export const WeatherInfo = () => Widget.Box({
                     justification: 'left',
                     label: Utils.merge([weather.bind('city'), clock.bind()], (ct, c) => {
                         return ct.name
-                            ? `${ct.name}, ${c.format('%F %A')}`
-                            : `${c.format('%F %A')}`;
+                            ? `${ct.name}, ${c.format('%F %a.')}`
+                            : `${c.format('%F %a.')}`;
                     })
                 })
             ]
@@ -79,22 +79,28 @@ export const WeatherInfo = () => Widget.Box({
     ]
 })
 
-export const WeatherForcast = () => Widget.Box({
-    vertical: false, 
-    class_name: 'weather-forcast',
-    homogeneous: true,
-    children: weather.bind('hours').as(h => {
-        return h.map(c => {
-            return Widget.Box({
-                className: 'forcast-item',
-                vertical: true,
-                children: [
-                    Widget.Icon(weather.getWeatherIcon(c)), 
-                    Widget.Label(getHourMinutes(c.dt)),
-                    Widget.Label(`${parseInt(c.main?.temp)}°C`)
-                ]
-            })
-        });
-    })
+const upButton = Widget.Button({
+    label: 'Update Weahter !', 
+    class_name: 'arrow-button',
+    visible: weather.bind('hours').as(h => h.length > 0),
+    on_clicked: () => weather.update(true)
+});
+
+const weatherItem = (c) => Widget.Box({
+    className: 'forcast-item',
+    vertical: true,
+    children: [
+        Widget.Icon(weather.getWeatherIcon(c)), 
+        Widget.Label(getHourMinutes(c.dt)),
+        Widget.Label(`${parseInt(c.main?.temp)}°C`)
+    ]
 })
 
+export const WeatherForcast = () => Widget.Box({
+    vertical: false, 
+    homogeneous: true,
+    class_name: 'weather-forcast',
+    children: weather.bind('hours').as(h => {
+        return h.length ? h.map(c => weatherItem(c)) : [upButton];
+    })
+})

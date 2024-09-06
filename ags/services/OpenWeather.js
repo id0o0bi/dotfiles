@@ -55,7 +55,7 @@ class OpenWeather extends Service {
                 this.#hours = data.list;
                 this.#today = this.#hours[0];
 
-                // console.log(this.#today)
+                // console.log(this.#city)
                 this.changed('city');
                 this.changed('today');
                 this.changed('hours');

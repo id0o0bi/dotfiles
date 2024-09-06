@@ -31,27 +31,6 @@ const updateItem = (updateStr) => {
     });
 }
 
-const UpdatesHeader = () => Widget.Box({
-    class_name: 'switch-header', 
-    vertical: false, 
-    children: [
-        Widget.Label({
-            hexpand: true,
-            justification: 'left',
-            hpack: 'start',
-            label: 'Updates'
-        }), 
-        Widget.Button({
-            on_clicked: () => console.log('update'), 
-            label: ''
-        }),
-        Widget.Button({
-            on_clicked: () => console.log('scan...'),
-            label: ''
-        }),
-    ]
-})
-
 const updatePackages = () => Widget.Scrollable({
     vscroll: 'automatic',
     hscroll: 'never',
@@ -73,17 +52,17 @@ const updatePackages = () => Widget.Scrollable({
     })
 });
 
-let xx = ControlBox({
+let updateHeader = ControlBox({
     title: 'Updates', 
     controls: [
-        Widget.Button({label: '󰏌'}),
+        // Widget.Button({label: '󰏌'}),
         Widget.Button({label: '', on_clicked: () => updates.check()}),
     ], 
     content: updatePackages()
 })
 
 export default () => Widget.Revealer({
-    child: xx,
+    child: updateHeader,
     setup: self => self.hook(runtime, () => {
         self.reveal_child = runtime.qsSwitchWindow === 'updates';
     })

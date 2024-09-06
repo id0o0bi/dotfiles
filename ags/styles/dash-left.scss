@@ -21,7 +21,7 @@
       all: unset;
       font-size: 12px;
       color: $highlightHigh;
-      &.play-pause { padding: 0 .5em; }
+      &.play-pause { padding: 0 16px; }
       &:hover {color: $highlightLow}
     }
 
