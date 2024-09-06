@@ -2,7 +2,7 @@
 > this is a dotfile repo
 
 # Components
-<img src="./screenshots/2023072211071689995850.png" alt="" align="right" width="450px">
+<img src="./ags/assets/2024090619091725623428.png" alt="" align="right" width="450px">
 
 - **WM**        : [Hyprland](https://github.com/hyprwm/Hyprland) :art: WM for Wayland!
 - **Colors**    : [Rosé Pine](https://rosepinetheme.com/) :rainbow: Something beautiful!
