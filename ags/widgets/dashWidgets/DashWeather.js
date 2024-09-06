@@ -3,16 +3,16 @@ import { clock } from '../../variables/System.js';
 
 const icon_path = `${App.configDir}/assets/openweathermap/`;
 const icon_file = {
-    'na' : `${icon_path}na.svg`,
-    'tp' : `${icon_path}thermometer.svg`,
-    'hu' : `${icon_path}humidity.svg`,
-    'ba' : `${icon_path}barometer.svg`,
-    'wi' : `${icon_path}wind.svg`,
-    'ho' : `${icon_path}horizon.svg`,
-    'sr' : `${icon_path}sunrise.svg`,
-    'mr' : `${icon_path}moonrise.svg`,
-    'ss' : `${icon_path}sunset.svg`,
-    'ms' : `${icon_path}moonset.svg`,
+    'na': `${icon_path}na.svg`,
+    'tp': `${icon_path}thermometer.svg`,
+    'hu': `${icon_path}humidity.svg`,
+    'ba': `${icon_path}barometer.svg`,
+    'wi': `${icon_path}wind.svg`,
+    'ho': `${icon_path}horizon.svg`,
+    'sr': `${icon_path}sunrise.svg`,
+    'mr': `${icon_path}moonrise.svg`,
+    'ss': `${icon_path}sunset.svg`,
+    'ms': `${icon_path}moonset.svg`,
 }
 
 const weatherExt = (icon, label) => Widget.Box({ children: [Widget.Icon(icon), label] })

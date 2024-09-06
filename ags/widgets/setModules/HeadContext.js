@@ -3,6 +3,7 @@ import runtime from '../../services/Runtime.js';
 import theme from './../../services/Theme.js';
 import icons from "../../core/icons.js";
 import { headRevealer } from '../../variables/Widget.js';
+import { uptime } from '../../variables/System.js';
 
 const Battery = await Service.import("battery")
 
@@ -73,10 +74,28 @@ const batteryInfo = () => Widget.Revealer({
                 class_name: 'battery-info', 
                 children:[
                     Widget.Label({
-                        setup: self => self.hook(Battery, () => {
-                            let percent = `${Battery.percent}%`;
-                            self.label = Battery.charging ? `󱐋 ${percent}` : `${percent}`;
-                        })
+                        hpack: 'end',
+                        justification: 'right',
+                        label: Battery.bind('percent').as(p => `${p}%`)
+                    }), 
+                    Widget.Box({
+                        vertical: true, 
+                        class_name: 'battery-tip', 
+                        hpack: 'start', 
+                        vpack: 'center',
+                        children: [
+                            Widget.Label({
+                                hpack: 'start', 
+                                justification: 'left',
+                                label: Battery.bind('charging').as(c => c ? '󱐋 Charging' : 'Not Charging')
+                            }),
+                            Widget.Label({
+                                hpack: 'start', 
+                                justification: 'left',
+                                label: uptime.bind().as(t => `󰥔 ${t}`),
+                                // label: 'Up: 1h33m'
+                            })
+                        ]
                     })
                 ]
             })
@@ -84,53 +103,6 @@ const batteryInfo = () => Widget.Revealer({
     }) 
     
 })
-
-const updateItem = (updateStr) => {
-    let pac = updateStr.split(/\s+/);
-    return Widget.Box({
-        vertical: true,
-        class_name: 'update-item',
-        children: [
-            Widget.Label({
-                wrap: true, 
-                hpack: 'start',
-                justification: 'left',
-                class_name: 'update-title', 
-                label: pac[0]
-            }), 
-            Widget.Label({
-                wrap: true, 
-                hpack: 'start',
-                justification: 'left',
-                class_name: 'update-version', 
-                label: `${pac[1]}${pac[3]}`
-            }), 
-        ]
-    });
-}
-
-const updatePackages = () => Widget.Revealer({
-    // revealChild: runtime.bind('qsHeadRevealer').as(r => r === 'updatePackages'),
-    transition: 'none',
-    child: Widget.Scrollable({
-        vscroll: 'automatic',
-        hscroll: 'never',
-        css: 'min-height: 180px;',
-        class_name: 'update-packages',
-        child: Widget.Box({
-            vertical: true,
-            children: packages.as(p => {
-                return [
-                    Widget.Label({
-                        visible: packages.as(p => p.length === 0), 
-                        label: 'All Packages Updated!'
-                    }),
-                    ...p.map(s => updateItem(s))
-                ]
-            })
-        })
-    })
-});
 
 const systemActions = () => Widget.Revealer({
     setup: self => self.hook(runtime, () =>

@@ -5,11 +5,10 @@ import ControlBright from './ControlBright.js';
 export default () => Widget.Box({
     hexpand: true,
     vertical: true,
-    // homogeneous: true,
     class_name: 'controls',
     children: [
-        ControlVolume(),
         ControlBright(),
+        ControlVolume(),
     ]
 });
 

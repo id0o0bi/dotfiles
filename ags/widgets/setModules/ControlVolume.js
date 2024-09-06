@@ -17,7 +17,6 @@ const SinkItem = (stream) => Widget.Button({
     hexpand: true,
     class_name: 'sink-item',
     on_clicked: () => audio.speaker = stream,
-    // setup: self => {console.log(stream)},
     child: Widget.Box({
         children: [
             Widget.Icon({
@@ -31,12 +30,7 @@ const SinkItem = (stream) => Widget.Button({
                 icon: 'object-select-symbolic',
                 hexpand: true,
                 hpack: "end",
-                // visible: false
                 visible: audio.speaker.bind("stream").as(s => s.id === stream.id),
-                // visible: audio.speaker.bind("stream").as(s => {
-                //     console.error(s.id, stream.id, s.id === stream.id);
-                //     return s.id === stream.id
-                // }),
             }),
         ],
     }),
@@ -45,7 +39,7 @@ const SinkItem = (stream) => Widget.Button({
 const sinkSelector = Widget.Revealer({
     transitionDuration: 200,
     child: ControlBox({
-        title: 'Output Sink', 
+        title: 'Audio Output Sink', 
         controls: [], 
         content: Widget.Box({
             vertical: true,

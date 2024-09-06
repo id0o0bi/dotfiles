@@ -14,18 +14,6 @@ const brightSlider = Widget.Slider({
     value: Brightness.bind('screen')
 })
 
-const samplerBox = Widget.Revealer({
-    transitionDuration: 200,
-    child: Widget.Box({
-        // child: Widget.Label('brightness box')
-    })
-})
-
-const brightToggler = ToggleArrow({
-    open: () => samplerBox.reveal_child = true,
-    shut: () => samplerBox.reveal_child = false,
-})
-
 export default () => Widget.Box({
     vertical: true,
     children: [
@@ -34,9 +22,7 @@ export default () => Widget.Box({
             children: [
                 brightIcon,
                 brightSlider, 
-                brightToggler
             ]
         }), 
-        samplerBox
     ]
 })

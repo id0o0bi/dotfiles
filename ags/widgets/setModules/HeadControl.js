@@ -29,13 +29,8 @@ const commandButton = () => Widget.Button({
 const systemButton = () => Widget.Button({
     label: '',
     class_name: 'round-button',
-    on_clicked: () => runtime.qsHeadRevealer = 'systemActions',
-})
-
-const updateButton = () => Widget.Button({
-    label: packages.as(p => p.length > 0 ? '󰘿' : '󰅠'),
-    class_name: 'sys-update round-button',
-    on_clicked: () => runtime.qsHeadRevealer = 'updatePackages',
+    // on_clicked: () => runtime.qsHeadRevealer = 'systemActions',
+    on_clicked: () => App.toggleWindow('powermenu'),
 })
 
 export default () => Widget.Box({
@@ -46,8 +41,8 @@ export default () => Widget.Box({
     class_name: 'head-control',
     children: [
         Widget.Box({
-            // children: [themeButton(), batteryButton(), commandButton()]
-            children: [themeButton(), commandButton()]
+            children: [themeButton(), batteryButton()]
+            // children: [themeButton(), commandButton()]
         }),
         Widget.Box({
             hpack: 'end',
