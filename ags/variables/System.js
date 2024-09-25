@@ -37,20 +37,20 @@ export const distroIcon = (() => {
 /** @type {function([string, string] | string[]): number} */
 const divide = ([total, free]) => Number.parseInt(free) / Number.parseInt(total);
 
-// export const cpu = Variable(0, {
-//     poll: [intval, 'top -b -n 1', out => divide(['100', out.split('\n')
-//         .find(line => line.includes('Cpu(s)'))
-//         ?.split(/\s+/)[1]
-//         .replace(',', '.') || '0'])],
-// });
-//
-// export const ram = Variable(0, {
-//     poll: [intval, 'free', out => divide(out.split('\n')
-//         .find(line => line.includes('Mem:'))
-//         ?.split(/\s+/)
-//         .splice(1, 2) || ['1', '1'])],
-// });
-//
+export const cpu = Variable(0, {
+    poll: [intval, 'top -b -n 1', out => divide(['100', out.split('\n')
+        .find(line => line.includes('Cpu(s)'))
+        ?.split(/\s+/)[1]
+        .replace(',', '.') || '0'])],
+});
+
+export const ram = Variable(0, {
+    poll: [intval, 'free', out => divide(out.split('\n')
+        .find(line => line.includes('Mem:'))
+        ?.split(/\s+/)
+        .splice(1, 2) || ['1', '1'])],
+});
+
 // export const temp = Variable(0, {
 //     poll: [intval, 'cat ' + options.temperature, n => {
 //         return Number.parseInt(n) / 100_000;

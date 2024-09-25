@@ -68,7 +68,7 @@ const batteryInfo = () => Widget.Revealer({
         }), 
         overlays: [
             Widget.Box({
-                hexpand: true, 
+                hpack: 'center',
                 vertical: false,
                 homogeneous: true, 
                 class_name: 'battery-info', 
@@ -100,8 +100,7 @@ const batteryInfo = () => Widget.Revealer({
                 ]
             })
         ]
-    }) 
-    
+    })
 })
 
 const systemActions = () => Widget.Revealer({

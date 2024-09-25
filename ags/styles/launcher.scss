@@ -43,7 +43,12 @@ window#launcher .launcher {
         -gtk-icon-shadow: $rose 1px 0 2px;
       }
 
-      image { margin-right: 14px; }
+      image {
+        min-width: 48px;
+        min-height: 48px;
+        font-size: 48px;
+        margin-right: 14px;
+      }
 
       .title {
         min-height: 1.6em;

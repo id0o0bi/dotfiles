@@ -9,6 +9,8 @@ cava
 dust
 fcitx5
 fontconfig
+foot
+kitty
 misc
 mpd
 mpv
@@ -20,7 +22,6 @@ ranger
 swayidle
 swaylock
 w3m
-wezterm
 yt-dlp
 zathura
 tmux/plugins

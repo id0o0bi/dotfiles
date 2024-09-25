@@ -55,5 +55,10 @@ window .ags-bar {
             &.battery .critical {color: $love}
             &.battery .charging {color: $foam}
         }
+
+        .usage label.stats {
+          background:$highlightLow;
+          padding: 0px 6px;
+        }
     }
 }

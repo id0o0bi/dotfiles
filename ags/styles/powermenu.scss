@@ -40,7 +40,17 @@ window#powermenu .power-menu {
       margin-top: 2em;
 
       &:first-child {margin-left: 0;}
-      &:last-child {margin-right: 0;}
+      &:last-child {
+        margin-right: 0;
+        font-weight: bold;
+        color: $base;
+        background: $foam;
+
+        &:hover {
+          color: $base;
+          background: $love;
+        }
+      }
     }
   }
 }

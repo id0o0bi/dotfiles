@@ -11,15 +11,10 @@ const AppItem = app => Widget.Button({
         launchApp(app);
     },
     child: Widget.Box({
-        // setup: self => {
-        //     if (typeof app.iconName !== 'string') {
-        //         console.log(app)
-        //     }
-        // },
         children: [
             Widget.Icon({
+                class_name: 'app-icon',
                 icon: app.iconName,
-                size: 48,
             }),
             Widget.Box({
                 vertical: true,

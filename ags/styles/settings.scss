@@ -100,14 +100,14 @@ window#settings .settings {
 
           .empty {
             border: none;
-            background: $muted;
+            background: $overlay;
             border-radius: 100px;
           }
 
           .filled {
             min-width: $height;
             border: none;
-            background: $text;
+            background: $surface;
             border-radius: 100px;
           }
         }
@@ -117,15 +117,13 @@ window#settings .settings {
         font-size: 1.2em;
         font-weight: bold;
         font-family: 'JetBrainsMono';
-        color: $highlightLow;
       }
 
       .battery-tip {
-        border-left: 1px solid $highlightHigh;
+        border-left: 1px solid $text;
         margin-left: 8px;
         padding-left: 8px;
         font-size: 0.6em;
-        color: $highlightMed;
       }
 
       .command-help {

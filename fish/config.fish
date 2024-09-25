@@ -1,5 +1,6 @@
-# set up go path
-set -x -U GOPATH $HOME/.go
+# set up env vars
+set -Ux GOPATH $HOME/.go
+set -gx EDITOR nvim
 
 if status is-interactive
     set -g fish_greeting

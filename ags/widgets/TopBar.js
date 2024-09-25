@@ -8,6 +8,7 @@ import { Volume, Mic } from './barButtons/Audio.js';
 import Battery from './barButtons/Battery.js';
 import Bluetooth from './barButtons/Bluetooth.js';
 // import ColorPicker from './barButtons/ColorPicker.js';
+import SysUsage from './barButtons/SysUsage.js';
 import ScreenRecord from './barButtons/ScreenRecord.js';
 import PanelButton from './templates/PanelButton.js'
 
@@ -40,6 +41,7 @@ const End = () => Widget.Box({
         SysTray(),
         ScreenRecord(),
         // ColorPicker(),
+        SysUsage(),
         PanelButton({
             window: 'settings', 
             children: [

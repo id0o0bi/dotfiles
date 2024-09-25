@@ -17,9 +17,9 @@
       font-family: $global-font-family;
       background: $overlay;
 
-      &.on {background: $pine}
+      &.on {background: $pine;}
       &.second {font-size: 0px;background: $rose;}
-      &.on.second {background: $iris}
+      &.on.second {background: $iris;}
     }
   }
 }
