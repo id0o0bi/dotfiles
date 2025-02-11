@@ -3,6 +3,7 @@ import Gio   from "gi://Gio"
 import opts  from './options.js';
 import icons from './icons.js';
 import theme from '../services/Theme.js';
+import weather from '../services/OpenWeather.js';
 import { bash, dependencies } from "./utils.js"
 
 const { message, messageAsync } = await Service.import("hyprland")
@@ -37,8 +38,22 @@ export function init() {
         blurWindows();
     });
 
-    blurWindows();
+    // change theme after sunrise or sun set
+    weather.connect('changed', (weather) => {
+        if (!weather.city.sunrise || !weather.city.sunset) return ;
 
+        let sr = new Date(weather.city.sunrise*1000);
+        let ss = new Date(weather.city.sunset*1000);
+        let ts = new Date();
+
+        sr = sr.getMinutes() + 60*sr.getHours();
+        ss = ss.getMinutes() + 60*ss.getHours();
+        ts = ts.getMinutes() + 60*ts.getHours();
+
+        theme.name = (ts < sr || ts > ss) ? 'rose' : 'dawn';
+    })
+
+    blurWindows();
 }
 
 function initWallpaper() {

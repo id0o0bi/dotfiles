@@ -15,10 +15,8 @@ if status is-interactive
     alias restartSnd="systemctl --user restart pipewire pipewire-pulse wireplumber"
     alias piMount="sudo mount -vvv -t nfs -o vers=3 10.0.0.10:/mnt/WDR /mnt/PiShare"
 
-    # app with proxy
-    alias ppv="mpv --stream-lavf-o-append=http_proxy=http://127.0.0.1:7890"
-
-    alias icat="kitten icat"
+    # mpv with proxy
+    alias ppv="mpv --http-proxy=http://127.0.0.1:7890"
 
     fish_add_path $HOME/.local/bin
 end

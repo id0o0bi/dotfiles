@@ -42,6 +42,7 @@ class OpenWeather extends Service {
         Utils.execAsync(['curl', url])
             .then(res => {
                 let data = JSON.parse(res);
+                // console.log(data)
                 if (data.cod != 200) {
                     // utils.notify({
                     //     summary: "weather info update failed",

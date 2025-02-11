@@ -19,5 +19,5 @@ return {
   { key = 'k', mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Up'},
   { key = 'l', mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Right'},
   { key = 'p', mods = 'CTRL', action = wezterm.action.EmitEvent 'padding-off' },
-  { key = 'b', mods = 'CTRL', action = wezterm.action.EmitEvent 'toggle-opacity' },
+  { key = 'o', mods = 'CTRL', action = wezterm.action.EmitEvent 'toggle-opacity' },
 }

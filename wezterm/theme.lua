@@ -20,13 +20,17 @@ local main_palette = {
 }
 
 local main_active_tab = {
-    bg_color = main_palette.overlay,
-    fg_color = main_palette.text,
+    -- bg_color = main_palette.overlay,
+    -- fg_color = main_palette.text,
+    bg_color = 'rgba(38, 35, 58, 0.6)',
+    fg_color = 'rgba(224, 222, 244, 0.6)',
 }
 
 local main_inactive_tab = {
-    bg_color = main_palette.base,
-    fg_color = main_palette.muted,
+    -- bg_color = main_palette.base,
+    -- fg_color = main_palette.muted,
+    bg_color = 'rgba(25, 23, 36, 0.6)',
+    fg_color = 'rgba(110, 106, 134, 0.6)',
 }
 
 function main.colors()
@@ -62,13 +66,13 @@ function main.colors()
         },
 
         tab_bar = {
-            background = main_palette.base,
+            background = main_inactive_tab.bg_color,
             active_tab = main_active_tab,
             inactive_tab = main_inactive_tab,
             inactive_tab_hover = main_active_tab,
             new_tab = main_inactive_tab,
             new_tab_hover = main_active_tab,
-            inactive_tab_edge = main_palette.muted, -- (Fancy tab bar only)
+            inactive_tab_edge = main_inactive_tab.fg_color, -- (Fancy tab bar only)
         },
     }
 end

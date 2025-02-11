@@ -5,6 +5,7 @@ export default () => Widget.Button({
     className: 'weather', 
     child: Widget.Icon({
         size: 18,
+        className: 'weather-icon', 
         icon: weather.bind('today').as(t => weather.getWeatherIcon(t))
     })
 })

@@ -36,6 +36,7 @@ window .ags-bar {
 
     .bar-center {
         .notification {color: $rose;}
+        -gtk-icon-shadow: transparentize($text, 0.5) 1px 0 2px;
     }
 
     .bar-right {

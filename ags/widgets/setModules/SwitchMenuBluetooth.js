@@ -11,6 +11,8 @@ const DeviceItem = (device) => Widget.Box({
             class_name: 'icon',
             hpack: 'center',
             vpack: 'center',
+            tooltip_text: device.bind('connected')
+                .as(c => c ? `${device.battery_percentage.toString()}%` : null),
             children: [
                 Widget.Icon({
                     hpack: 'center',
@@ -18,7 +20,6 @@ const DeviceItem = (device) => Widget.Box({
                 }),
                 Widget.LevelBar({
                     visible: device.bind('battery_percentage').as(p => p > 0),
-                    tooltip_text: device.bind('battery_percentage').as(p => `${p.toString()}%`),
                     value: device.bind('battery_percentage').as(p => p/100),
                 })
             ]

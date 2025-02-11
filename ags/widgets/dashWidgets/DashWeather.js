@@ -15,7 +15,10 @@ const icon_file = {
     'ms': `${icon_path}moonset.svg`,
 }
 
-const weatherExt = (icon, label) => Widget.Box({ children: [Widget.Icon(icon), label] })
+const weatherExt = (icon, label) => Widget.Box({ children: [Widget.Icon({
+    className: 'weather-icon', 
+    icon: icon
+}), label] })
 
 const wiLabel = Widget.Label({ label: weather.bind('today').as(t => `${t.wind?.speed || ''}km/h`) })
 const tpLabel = Widget.Label({ label: weather.bind('today').as(t => `${t.main?.temp || ''}°C`) })
@@ -65,15 +68,15 @@ export const WeatherInfo = () => Widget.Box({
                         weatherExt(icon_file.tp, tpLabel),
                     ]
                 }),
-                Widget.Label({
-                    hpack: 'start', 
-                    justification: 'left',
-                    label: Utils.merge([weather.bind('city'), clock.bind()], (ct, c) => {
-                        return ct.name
-                            ? `${ct.name}, ${c.format('%F %a.')}`
-                            : `${c.format('%F %a.')}`;
-                    })
-                })
+                // Widget.Label({
+                //     hpack: 'start', 
+                //     justification: 'left',
+                //     label: Utils.merge([weather.bind('city'), clock.bind()], (ct, c) => {
+                //         return ct.name
+                //             ? `${ct.name}, ${c.format('%F %a.')}`
+                //             : `${c.format('%F %a.')}`;
+                //     })
+                // })
             ]
         })
     ]
@@ -90,7 +93,10 @@ const weatherItem = (c) => Widget.Box({
     className: 'forcast-item',
     vertical: true,
     children: [
-        Widget.Icon(weather.getWeatherIcon(c)), 
+        Widget.Icon({
+            className: 'weather-icon',
+            icon: weather.getWeatherIcon(c)
+        }), 
         Widget.Label(getHourMinutes(c.dt)),
         Widget.Label(`${parseInt(c.main?.temp)}°C`)
     ]

@@ -79,6 +79,10 @@ switch {
   background: $base_blur;
 }
 
+image.weather-icon {
+  -gtk-icon-shadow: transparentize($text, 0.5) 1px 0 2px;
+}
+
 button.arrow-button {
   all: unset;
   color: $muted;
