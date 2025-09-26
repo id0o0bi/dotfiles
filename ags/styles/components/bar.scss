@@ -30,6 +30,7 @@ window#bar {
             label.clientTitle {
                 font-weight: bold;
                 font-size: 14px;
+                min-height: 24px;
                 margin: 0 var(--rpt-spacing);
             }
 

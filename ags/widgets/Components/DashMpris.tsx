@@ -1,7 +1,13 @@
 import { createBinding, For } from "ags";
 import { Gdk, Gtk } from "ags/gtk4";
 import AstalMpris from "gi://AstalMpris?version=0.1";
-import { ASSETS, CENTER, END, VERTICAL } from "../../services/vars";
+import {
+  ASSETS,
+  BASELINE_CENTER,
+  CENTER,
+  END,
+  VERTICAL,
+} from "../../services/vars";
 import Pango from "gi://Pango?version=1.0";
 import Adw from "gi://Adw?version=1";
 import { fileExists, formatSeconds } from "../../services/util";
@@ -43,33 +49,32 @@ const Player = (p: AstalMpris.Player): Gtk.Box => {
   const MusicTitle = () => (
     <Gtk.Inscription
       text={createBinding(p, "title")}
+      valign={CENTER}
+      vexpand
       wrapMode={Pango.WrapMode.NONE}
-      hexpand={true}
-      // vexpand={true}
       textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
     />
   );
 
   const MusicApp = () => (
     <Gtk.Inscription
-      // text={p.album || p.identity || p.entry}
       text={createBinding(p, "album")}
-      wrapMode={Pango.WrapMode.NONE}
-      hexpand={true}
-      valign={Gtk.Align.BASELINE}
-      // xalign={0}
       sensitive={false}
+      wrapMode={Pango.WrapMode.NONE}
       textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
+      hexpand
+      valign={Gtk.Align.BASELINE_CENTER}
+      // xalign={0}
     />
   );
 
   const MusicArtist = () => (
     <Gtk.Inscription
+      text={createBinding(p, "artist").as((a) => (a ? a : ""))}
       sensitive={false}
       wrapMode={Pango.WrapMode.NONE}
-      hexpand={true}
-      text={createBinding(p, "artist").as((a) => (a ? a : ""))}
       textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
+      hexpand
     />
   );
 

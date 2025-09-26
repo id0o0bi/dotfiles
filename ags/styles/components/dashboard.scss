@@ -15,6 +15,11 @@
                         var(--rpt-pine)
                     );
 
+                    label {
+                        font-size: 13px;
+                        min-height: 20px;
+                    }
+
                     .coverArt avatar {
                         border-radius: var(--rpt-spacing) 0 0 0;
                     }
