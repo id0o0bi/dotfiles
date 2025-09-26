@@ -2,11 +2,12 @@ local wezterm = require 'wezterm'
 local theme = require('theme').main
 
 return {
+    dpi = 384.0,
     keys = require('keys'),
     colors = theme.colors(),
     window_frame = theme.window_frame(),
-    font = wezterm.font 'JetBrainsMono NFM',
-    font_size = 12,
+    font = wezterm.font 'Maple Mono NF CN',
+    font_size = 12.5,
     default_cursor_style = 'BlinkingBlock',
 
     window_close_confirmation = 'NeverPrompt',
